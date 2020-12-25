@@ -3,13 +3,15 @@ import axios from 'axios';
 import './App.css';
 import SearchPanel from './search-panel';
 import PostList from './post-list';
+import PostStatusFilter from './post-status-filter';
 
 
 class App extends Component {
   constructor(props){
     super(props);
-      this.state = { todos: [], term: ''};
+      this.state = { todos: [], term: '', filter: 'all'};
       this.onUpdateSearch = this.onUpdateSearch.bind(this);
+      this.onFilterSelect = this.onFilterSelect.bind(this);
 }
   
   
@@ -25,24 +27,47 @@ class App extends Component {
 searchPost (items, term) {
   if (term.lenght === 0) {
       return items
-  }
+  } 
   return items.filter((item) => {
       return item.title.indexOf(term) > -1
   });
 }
 
+
+filterPost (items, filter) {
+  if (filter === "completed") {
+  return items.filter(item => item.completed)
+} else {
+  return items
+  }
+}
+
+onFilterSelect (filter) {
+  this.setState({filter})
+}
+
+
   render () {
 
-const {todos, term} = this.state;
-const visiblePosts = this.searchPost(todos, term);
+const {todos, term, filter} = this.state;
+const visiblePosts = this.filterPost(this.searchPost(todos, term), filter);
 
     return (
 <div className="container">
-<SearchPanel onUpdateSearch={this.onUpdateSearch}/>
-      {this.state.todos.length > 0 ? (
-      <div><PostList posts={visiblePosts}/></div>) : <div>Не гони, обожди</div>} 
+    <div className='header'>
+      <div>
+          <SearchPanel onUpdateSearch={this.onUpdateSearch}/>
+      </div>
+      <div>
+          <PostStatusFilter filter={filter} onFilterSelect={this.onFilterSelect}/>
+      </div>
+    </div>
+    <div>
+        <PostList posts={visiblePosts}/>
+    </div>
+    
 </div>
-      );
+    );
   } 
 }
 
