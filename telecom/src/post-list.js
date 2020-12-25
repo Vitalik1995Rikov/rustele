@@ -1,11 +1,13 @@
 import React from 'react';
 
+import './post-list.css';
+
 const PostList = ({posts}) => {
      
     const elements = posts.map((todo) =>{
         return (
             <div key={todo.id} className="list">
-            <div key="listlist" className="list-group-item">
+            <div key={todo.id} className="list-group-item">
                 <div key="id" className="1">
                     {todo.id}
                 </div>
@@ -20,7 +22,7 @@ const PostList = ({posts}) => {
           )
     });
     return (
-        <ul key className="app-list list-group">
+        <ul key className="app-list">
             {elements}
         </ul>
     )

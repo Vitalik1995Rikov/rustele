@@ -53,6 +53,7 @@ const {todos, term, filter} = this.state;
 const visiblePosts = this.filterPost(this.searchPost(todos, term), filter);
 
     return (
+<div className="all">
 <div className="container">
     <div className='header'>
       <div>
@@ -66,6 +67,7 @@ const visiblePosts = this.filterPost(this.searchPost(todos, term), filter);
         <PostList posts={visiblePosts}/>
     </div>
     
+</div>
 </div>
     );
   } 

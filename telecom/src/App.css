@@ -1,5 +1,13 @@
-.list {
-  width: 600px;
+.all {
+  display: grid;
+  
+}
+
+.container {
+  align-self: center;
+  justify-self: center;
+  width: 700px;
+  
 }
 
 .list-group-item {
@@ -9,5 +17,5 @@
 
 .header {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
 }
