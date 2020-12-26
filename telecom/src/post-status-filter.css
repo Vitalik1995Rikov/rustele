@@ -1,9 +1,29 @@
 .btn-group {
-    background-color: aqua;
-    padding: 10px 10px 10px 30px;
+    padding: 10px 10px 10px 25px;
     margin-top: 10px;
-    margin-left: 40px;
+    margin-left: 20px;
     background-color: #CCE6E8;
     border-radius: 5px;
     border-style: none;
+}
+
+.btn {
+    display: inline-block;
+  color: black;
+  text-decoration: none;
+  padding: 5px 15px;
+  outline: none;
+  margin-left: 5px;
+  border-style: none;
+  border-radius: 6px;
+  background: white;
+  
+}
+
+.btn:hover { 
+    background: linear-gradient(#CCE6E8,#70dee6)#0a939c; 
+}
+
+.btn:active { 
+    background: linear-gradient(#205155, #06464b) #077077; 
 }
